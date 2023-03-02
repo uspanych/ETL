@@ -1,5 +1,6 @@
 import abc
 from typing import Any, Optional
+from json.decoder import JSONDecodeError
 import json
 
 
@@ -30,7 +31,7 @@ class JsonFileStorage(BaseStorage):
                 data = json.load(file_state)
 
             return data
-        except json.decoder.JSONDecodeError:
+        except (FileNotFoundError, JSONDecodeError):
 
             return {}
 
