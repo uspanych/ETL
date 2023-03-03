@@ -182,20 +182,20 @@ class PostgresExtract:
                 if item.get('person_role') == 'director':
                     directors.append(actor_name)
 
-                data = {
-                    'id': filmwork.get('fw_id'),
-                    'title': filmwork.get('title'),
-                    'description': filmwork.get('description'),
-                    'imdb_rating': filmwork.get('rating'),
-                    'genre': filmwork.get('genres'),
-                    'director': directors,
-                    'actors_names': actors_names,
-                    'writers_names': writers_names,
-                    'actors': actors,
-                    'writers': writers,
-                }
+            data = {
+                'id': filmwork.get('fw_id'),
+                'title': filmwork.get('title'),
+                'description': filmwork.get('description'),
+                'imdb_rating': filmwork.get('rating'),
+                'genre': filmwork.get('genres'),
+                'director': directors,
+                'actors_names': actors_names,
+                'writers_names': writers_names,
+                'actors': actors,
+                'writers': writers,
+            }
 
-                if data not in filmworks_list:
-                    filmworks_list.append(data)
+            if data not in filmworks_list:
+                filmworks_list.append(data)
 
         return [ToElasticModel(**item) for item in filmworks_list]

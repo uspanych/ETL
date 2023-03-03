@@ -77,7 +77,7 @@ fw.modified,
                'person_id', p.id,
                'person_name', p.full_name
            )
-       ),
+       ) FILTER (WHERE p.id is not null),
        '[]'
    ) as persons,
    array_agg(DISTINCT g.name) as genres
